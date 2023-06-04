@@ -28,7 +28,7 @@ paths:
       description: displays the home page.
       responses:
         "200":
-          description: Home page loaded successfully
+          description: page loaded successfully
         "404":
           description: Page was not found.
   ############ Home ########################
