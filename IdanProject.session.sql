@@ -7,8 +7,8 @@ DROP TABLE IF EXISTS users;
 
 
 CREATE TABLE IF NOT EXISTS idan_db.users (
-    user_id INT NOT NULL AUTO_INCREMENT,
-    username VARCHAR(255) NOT NULL UNIQUE,
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
     firstname VARCHAR(255) NOT NULL,
     lastname VARCHAR(255) NOT NULL,
     country VARCHAR(255) NOT NULL,
@@ -27,7 +27,7 @@ CREATE TABLE idan_db.Users_Favorites (
 );
 
 CREATE TABLE idan_db.Personal_Recipes (
-  recipe_id INT AUTO_INCREMENT PRIMARY KEY,
+  recipe_id INT PRIMARY KEY AUTO_INCREMENT,
   user_id INT NOT NULL,
   title VARCHAR(255) NOT NULL,
   readyInMinutes INT,
@@ -47,7 +47,7 @@ CREATE TABLE idan_db.Personal_Recipes (
 CREATE TABLE idan_db.User_Recipe_History (
   user_id INT NOT NULL,
   recipe_id INT NOT NULL,
-  timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  timestamp BIGINT NOT NULL,
   PRIMARY KEY (user_id, recipe_id),
   FOREIGN KEY (user_id) REFERENCES idan_db.users(user_id)
     ON DELETE NO ACTION
@@ -55,10 +55,8 @@ CREATE TABLE idan_db.User_Recipe_History (
 );
 
 -- CREATE TABLE idan_db.Recipe_Likes (
---   id INT PRIMARY KEY AUTO_INCREMENT,
 --   user_id INT NOT NULL,
 --   recipe_id INT NOT NULL,
---   timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 --   FOREIGN KEY (user_id) REFERENCES idan_db.users (user_id)
 --     ON DELETE NO ACTION
 --     ON UPDATE NO ACTION

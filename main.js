@@ -50,12 +50,11 @@ app.use(cors(corsConfig));
 app.options("*", cors(corsConfig));
 
 var port = process.env.PORT || "80"; //local=3000 remote=80
+
 //#endregion
 const user = require("./routes/user");
 const recipes = require("./routes/recipes");
 const auth = require("./routes/auth");
-
-
 //#region cookie middleware
 app.use(function (req, res, next) {
   if (req.session && req.session.user_id) {
@@ -80,7 +79,6 @@ app.get("/alive", (req, res) => res.send("I'm alive"));
 app.use("/users", user);
 app.use("/recipes", recipes);
 app.use(auth);
-
 // Default router
 app.use(function (err, req, res, next) {
   console.error(err);
