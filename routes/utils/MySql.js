@@ -1,16 +1,22 @@
-var mysql = require('mysql');
+var mysql = require('mysql2');
 require("dotenv").config();
 
+// spooncular_apiKey = 0607f6387b1d4b758e2a1dde3bd7ff54
+// PORT = 3000
+// host = localhost
+// user = root
+// password_db = Q6rh3bbenami
+// db = idan_db
+// bcrypt_saltRounds = 10
 
 const config={
 connectionLimit:4,
   host: process.env.host,//"localhost"
   user: process.env.user,//"root"
-  password: "pass_root@123",
-  database:"mydb"
+  password: process.env.password_db,
+  database: process.env.db
 }
 const pool = new mysql.createPool(config);
-
 const connection =  () => {
   return new Promise((resolve, reject) => {
   pool.getConnection((err, connection) => {
