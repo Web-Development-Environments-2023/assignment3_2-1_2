@@ -47,7 +47,7 @@ CREATE TABLE idan_db.Personal_Recipes (
 CREATE TABLE idan_db.User_Recipe_History (
   user_id INT NOT NULL,
   recipe_id INT NOT NULL,
-  timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  timestamp BIGINT NOT NULL,
   PRIMARY KEY (user_id, recipe_id),
   FOREIGN KEY (user_id) REFERENCES idan_db.users(user_id)
     ON DELETE NO ACTION
